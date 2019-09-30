@@ -1,0 +1,58 @@
+﻿body {
+    margin-left: 40px;
+    margin-top: 25px;
+}
+
+li {
+    /*Font from open-source library*/
+    color: red;
+    font-family: 'THSarabunNewRegular';
+    font-style: normal;
+    list-style-type: none;
+}
+
+fieldset {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.editor-field {
+    margin-bottom: 20px;
+}
+
+.editor-field :hover {
+        background-color: aquamarine;
+}
+
+.editor {
+    width: 400px;
+    border-color: midnightblue;
+}
+
+.editor-label, h2, legend {
+    color: midnightblue;
+    font-weight: bold;
+    /*Font from open-source library*/
+    font-family: 'THSarabunNewRegular';
+    font-style: normal;
+}
+
+p {
+    padding: 10px;
+}
+
+.submit {
+    width: 250px;
+    font-weight: bold;
+    background-color: midnightblue;
+    color: white;
+    /*Font from open-source library*/
+    font-family: 'THSarabunNewRegular';
+    font-size: 14pt;
+    font-style: normal;
+}
+
+footer {
+    color: GrayText;
+}

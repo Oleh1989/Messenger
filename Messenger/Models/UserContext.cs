@@ -8,7 +8,7 @@ namespace Messenger.Models
     /// </summary>
     public class UserContext : DbContext
     {
-        public UserContext() : base("DefaultConnection") { }
+        public UserContext() : base("Messenger.Users") { }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }

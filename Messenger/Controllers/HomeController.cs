@@ -10,10 +10,11 @@ namespace Messenger.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles = "admin")]
+        UserContext db = new UserContext();
+
         public ActionResult Index()
         {
-            return View();
+            return View(db.Users);
         }
     }
 }

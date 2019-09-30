@@ -1,6 +1,7 @@
 ﻿@model Messenger.Models.RegisterModel
 
 @{
+    Layout = "~/Views/Shared/_Layout.cshtml";
     ViewBag.Title = "Register";
 }
 
@@ -9,13 +10,14 @@
 @using (Html.BeginForm())
 {
     @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
 
     <fieldset>
         <div class="editor-label">
             @Html.LabelFor(model => model.Name)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Name)
+            @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "editor"} })
             @Html.ValidationMessageFor(model => model.Name)
         </div>
 
@@ -23,7 +25,7 @@
             @Html.LabelFor(model => model.Password)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.Password)
+            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "editor" } })
             @Html.ValidationMessageFor(model => model.Password)
         </div>
 
@@ -31,12 +33,12 @@
             @Html.LabelFor(model => model.ConfirmPassword)
         </div>
         <div class="editor-field">
-            @Html.EditorFor(model => model.ConfirmPassword)
+            @Html.EditorFor(model => model.ConfirmPassword, new { htmlAttributes = new { @class = "editor" } })
             @Html.ValidationMessageFor(model => model.ConfirmPassword)
         </div>
 
         <p>
-            <input type="submit" value="Enter"
+            <input type="submit" value="Enter" class="submit"/>
         </p>
     </fieldset>
 }

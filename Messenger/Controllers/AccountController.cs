@@ -21,18 +21,21 @@ namespace Messenger.Controllers
         {
             if (ModelState.IsValid)
             {
-                // Searching user in db
-                User user = db.Users.FirstOrDefault(u => u.Login == model.Name && u.Password == model.Password);
+                using (db)
+                {
+                    // Searching user in db
+                    User user = db.Users.FirstOrDefault(u => u.Login == model.Name && u.Password == model.Password);
 
-                if (user != null)
-                {
-                    FormsAuthentication.SetAuthCookie(model.Name, true);
-                    return RedirectToAction("Index", "Home");
-                }
-                else
-                {
-                    ModelState.AddModelError("", "There is no user with such login and password");
-                }
+                    if (user != null)
+                    {
+                        FormsAuthentication.SetAuthCookie(model.Name, true);
+                        return RedirectToAction("Index", "Home");
+                    }
+                    else
+                    {
+                        ModelState.AddModelError("", "There is no user with such login and password");
+                    }
+                }                
             }
             return View(model);
         }
@@ -46,20 +49,23 @@ namespace Messenger.Controllers
         {
             if (ModelState.IsValid)
             {
-                User user = db.Users.FirstOrDefault(u => u.Login == model.Name && u.Password == model.Password);
-                if (user == null)
+                using (db)
                 {
-                    db.Users.Add(new User { Login = model.Name, Password = model.Password, CreationDate = DateTime.Now, RoleId = 2 });
-                    db.SaveChanges();
-                    user = db.Users.Where(u => u.Login == model.Name && u.Password == model.Password).FirstOrDefault();
-                    if (user != null)
+                    User user = db.Users.FirstOrDefault(u => u.Login == model.Name && u.Password == model.Password);
+                    if (user == null)
                     {
-                        FormsAuthentication.SetAuthCookie(model.Name, true);
-                        return RedirectToAction("Index", "Home");
+                        db.Users.Add(new User { Login = model.Name, Password = model.Password, CreationDate = DateTime.Now, RoleId = 2 });
+                        db.SaveChanges();
+                        user = db.Users.Where(u => u.Login == model.Name && u.Password == model.Password).FirstOrDefault();
+                        if (user != null)
+                        {
+                            FormsAuthentication.SetAuthCookie(model.Name, true);
+                            return RedirectToAction("Index", "Home");
+                        }
                     }
-                }
-                else
-                    ModelState.AddModelError("", "User with such login and password already exists");
+                    else
+                        ModelState.AddModelError("", "User with such login and password already exists");
+                }                
             }
             return View(model);
         }
