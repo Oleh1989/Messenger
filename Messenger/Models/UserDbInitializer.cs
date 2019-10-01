@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data.Entity;
+using Messenger.Encryption;
 
 namespace Messenger.Models
 {
@@ -13,12 +14,15 @@ namespace Messenger.Models
             Role admin = new Role { Name = "admin" };
             Role user = new Role { Name = "user" };
 
+            string enryptedPassword = Protector.Encrypt("admin");
+
             db.Roles.Add(admin); db.Roles.Add(user);
 
             db.Users.Add(new User
             {
+                Id = 1,
                 Login = "admin",
-                Password = "admin",
+                Password = enryptedPassword,
                 CreationDate = DateTime.Now,
                 Role = admin
             });

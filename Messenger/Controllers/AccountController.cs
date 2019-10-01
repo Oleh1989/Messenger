@@ -5,6 +5,7 @@ using System.Web.Security;
 using System.Web;
 using System.Web.Mvc;
 using Messenger.Models;
+using Messenger.Encryption;
 
 namespace Messenger.Controllers
 {
@@ -23,8 +24,9 @@ namespace Messenger.Controllers
             {
                 using (db)
                 {
+                    string encryptedPassword = Protector.Encrypt(model.Password);
                     // Searching user in db
-                    User user = db.Users.FirstOrDefault(u => u.Login == model.Name && u.Password == model.Password);
+                    User user = db.Users.FirstOrDefault(u => u.Login == model.Name && u.Password == encryptedPassword);
 
                     if (user != null)
                     {
@@ -50,13 +52,14 @@ namespace Messenger.Controllers
             if (ModelState.IsValid)
             {
                 using (db)
-                {
+                {                    
                     User user = db.Users.FirstOrDefault(u => u.Login == model.Name && u.Password == model.Password);
                     if (user == null)
                     {
-                        db.Users.Add(new User { Login = model.Name, Password = model.Password, CreationDate = DateTime.Now, RoleId = 2 });
+                        string encryptedPassword = Protector.Encrypt(model.Password);
+                        db.Users.Add(new User { Login = model.Name, Password = encryptedPassword, CreationDate = DateTime.Now, RoleId = 2 });
                         db.SaveChanges();
-                        user = db.Users.Where(u => u.Login == model.Name && u.Password == model.Password).FirstOrDefault();
+                        user = db.Users.Where(u => u.Login == model.Name && u.Password == encryptedPassword).FirstOrDefault();
                         if (user != null)
                         {
                             FormsAuthentication.SetAuthCookie(model.Name, true);

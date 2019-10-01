@@ -1,6 +1,20 @@
 ﻿body {
-    margin-left: 40px;
-    margin-top: 25px;
+    margin-top: 5%;
+}
+
+.navbar-header {
+    font-family: 'THSarabunNewRegular';
+    font-style: normal;
+    font-size: 24pt;
+    font-weight: bold;
+
+}
+.logo {
+    color: white;
+}
+
+.container {
+    text-align: center;
 }
 
 li {
@@ -9,6 +23,7 @@ li {
     font-family: 'THSarabunNewRegular';
     font-style: normal;
     list-style-type: none;
+    font-size: 20pt;
 }
 
 fieldset {
@@ -21,9 +36,9 @@ fieldset {
     margin-bottom: 20px;
 }
 
-.editor-field :hover {
-        background-color: aquamarine;
-}
+    .editor-field :hover {
+        background-color: #B0C4DE;
+    }
 
 .editor {
     width: 400px;
@@ -38,6 +53,10 @@ fieldset {
     font-style: normal;
 }
 
+.editor-label {
+    font-size: 16pt;
+}
+
 p {
     padding: 10px;
 }
@@ -45,14 +64,37 @@ p {
 .submit {
     width: 250px;
     font-weight: bold;
-    background-color: midnightblue;
-    color: white;
+    background-color: white;
+    color: midnightblue;
     /*Font from open-source library*/
     font-family: 'THSarabunNewRegular';
-    font-size: 14pt;
+    font-size: 16pt;
     font-style: normal;
+    border-color: midnightblue;
 }
 
+    .submit:hover {
+        font-weight: bold;
+        background-color: midnightblue;
+        font-family: 'THSarabunNewRegular';
+        font-size: 16pt;
+        border-color: white;
+        color: white;
+    }
+
 footer {
-    color: GrayText;
+    color: lightblue;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+}
+
+
+.field-validation-error {
+    color: red;
+    display: block;
+    font-family: 'THSarabunNewRegular';
+    font-size: 11pt;
+    font-weight: bold;
 }

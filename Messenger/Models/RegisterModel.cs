@@ -9,6 +9,8 @@ namespace Messenger.Models
 
         [Required]
         [DataType(DataType.Password)]
+        [StringLength(50, MinimumLength = 5, ErrorMessage = "The length should be more than 5 and less then 50 characters")]
+
         public string Password { get; set; }
 
         [Required]

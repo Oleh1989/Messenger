@@ -8,7 +8,10 @@ namespace Messenger.Models
     /// </summary>
     public class UserContext : DbContext
     {
-        public UserContext() : base("Messenger.Users") { }
+        static UserContext()
+        {
+            Database.SetInitializer(new CreateDatabaseIfNotExists<UserContext>());            
+        }
 
         public DbSet<User> Users { get; set; }
         public DbSet<Role> Roles { get; set; }
