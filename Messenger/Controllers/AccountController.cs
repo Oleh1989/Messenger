@@ -11,7 +11,7 @@ namespace Messenger.Controllers
 {
     public class AccountController : Controller
     {
-        UserContext db = new UserContext();
+        UserContext db = new UserContext();        
         public ActionResult Login()
         {
             return View();
@@ -31,6 +31,12 @@ namespace Messenger.Controllers
                     if (user != null)
                     {
                         FormsAuthentication.SetAuthCookie(model.Name, true);
+
+                        if (user.RoleId == 1)
+                        {
+                            return RedirectToAction("Index", "Home", new { Area = "Admin" });
+                        }
+
                         return RedirectToAction("Index", "Home");
                     }
                     else

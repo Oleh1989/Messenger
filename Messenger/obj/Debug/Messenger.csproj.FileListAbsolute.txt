@@ -144,3 +144,6 @@ C:\Users\OlehB\source\repos\Messenger\Messenger\obj\Debug\Messenger.csproj.CoreC
 C:\Users\OlehB\source\repos\Messenger\Messenger\obj\Debug\Messenger.csproj.CopyComplete
 C:\Users\OlehB\source\repos\Messenger\Messenger\obj\Debug\Messenger.dll
 C:\Users\OlehB\source\repos\Messenger\Messenger\obj\Debug\Messenger.pdb
+C:\Users\OlehB\source\repos\Messenger\Messenger\bin\Antlr3.Runtime.dll
+C:\Users\OlehB\source\repos\Messenger\Messenger\bin\System.Web.Optimization.dll
+C:\Users\OlehB\source\repos\Messenger\Messenger\bin\WebGrease.dll
